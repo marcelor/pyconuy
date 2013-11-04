@@ -49,6 +49,10 @@ class Speaker(EndpointsMixin, object):
         func = getattr(self.client, method)
         params, files = _transparent_params(params)
 
+        if 'frames' in params:
+            frames = params.pop('frames')
+            files = {'file': ('audiodata', frames)}
+
         requests_args = {}
         for k, v in self.client_args.items():
             # Maybe this should be set as a class variable and only done once?
@@ -67,6 +71,7 @@ class Speaker(EndpointsMixin, object):
             response = func(url, **requests_args)
         except requests.RequestException as e:
             raise SpeakerError(str(e))
+
         content = response.content.decode('utf-8')
 
         json_error = False
@@ -94,6 +99,8 @@ class Speaker(EndpointsMixin, object):
 
         if json_error and response.status_code != 200:
             raise SpeakerError('Response was not valid JSON, unable to decode.')
+
+        content['status_code'] = response.status_code
 
         return content
 
