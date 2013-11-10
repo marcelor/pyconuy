@@ -7,7 +7,7 @@
     This module contains Speaker specific Exception classes.
 """
 
-from .endpoints import SPEAKER_HTTP_STATUS_CODES
+from speaker.endpoints import SPEAKER_HTTP_STATUS_CODES
 
 
 class SpeakerError(Exception):

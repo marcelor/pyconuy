@@ -11,9 +11,9 @@ import json
 import requests
 
 from . import __version__
-from .endpoints import EndpointsMixin
-from .exceptions import SpeakerError
-from .helpers import _transparent_params
+from speaker.endpoints import EndpointsMixin
+from speaker.exceptions import SpeakerError
+from speaker.helpers import _transparent_params
 
 
 class Speaker(EndpointsMixin, object):

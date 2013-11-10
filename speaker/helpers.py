@@ -8,7 +8,7 @@
     the Expand Speaker library.
 """
 
-from .compat import basestring, numeric_types
+from speaker.compat import basestring, numeric_types
 
 
 def _transparent_params(_params):

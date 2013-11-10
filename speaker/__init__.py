@@ -13,5 +13,5 @@
 __author__ = 'Marcelo Ramos <marcelor@gmail.com>'
 __version__ = '0.0.1'
 
-from .api import Speaker
-from .exceptions import SpeakerError
+from speaker.api import Speaker
+from speaker.exceptions import SpeakerError
